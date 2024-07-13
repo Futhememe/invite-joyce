@@ -1,95 +1,101 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import { Button } from "@/components/Button";
+import { Address } from "@/components/Sessions/Address";
+import { Date } from "@/components/Sessions/Date";
+import { Hero } from "@/components/Sessions/Hero";
+import { Invite } from "@/components/Sessions/Invite";
+import { PresentList } from "@/components/Sessions/PresentList";
+import { Warnings } from "@/components/Sessions/Warnings";
+import { ArrowFatLinesDown } from "@phosphor-icons/react";
+import { css } from "@styled-system/css";
+import { useRef } from "react";
+import { motion } from "framer-motion";
+import { Dialog } from "@/components/Dialog";
+import { Confirmation } from "@/components/DialogContent/Confirmation";
+import { Cancel } from "@/components/DialogContent/Cancel";
+import ReactLenis from "lenis/react";
 
 export default function Home() {
+  const inviteRef = useRef<HTMLDivElement>(null);
+
+  const scrollToInvite = () => {
+    inviteRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "start",
+    });
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <ReactLenis root>
+      <main
+        className={css({
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          overflowX: ["hidden", "hidden", "visible"],
+          pb: 6,
+          maxW: "39.375rem",
+        })}
+      >
+        <Hero onClickMore={scrollToInvite} />
+        <div ref={inviteRef} className={css({ pt: "25%" })}>
+          <Invite />
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
+        <div className={css({ pt: "25%" })}>
+          <Date />
+        </div>
+        <div className={css({ pt: "20%" })}>
+          <Address onConfirmVan={() => {}} />
+        </div>
+        <div className={css({ pt: "20%" })}>
+          <PresentList />
+        </div>
+        <div className={css({ pt: "10%" })}>
+          <Warnings />
+        </div>
+        <motion.div
+          className={css({
+            display: "flex",
+            w: "100%",
+            justifyContent: "center",
+            color: "green",
+          })}
         >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
+          <ArrowFatLinesDown size={32} />
+        </motion.div>
+        <div
+          className={css({
+            display: "flex",
+            flexDir: "column",
+            gap: "1.5rem",
+            justifyContent: "center",
+            mt: "3.63rem",
+            px: 6,
+          })}
         >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+          <Dialog.Root>
+            <Dialog.Trigger asChild>
+              <Button w={"100%"}>Confirmar presença</Button>
+            </Dialog.Trigger>
+            <Dialog.Content>
+              <Confirmation />
+            </Dialog.Content>
+          </Dialog.Root>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+          <Dialog.Root>
+            <Dialog.Trigger asChild>
+              <Button w={"100%"} variant="link">
+                Não vou poder ir ;--;
+              </Button>
+            </Dialog.Trigger>
+            <Dialog.Content>
+              <Cancel />
+            </Dialog.Content>
+          </Dialog.Root>
+        </div>
+      </main>
+    </ReactLenis>
   );
 }
