@@ -45,6 +45,13 @@ export const PresentList = () => {
           Lista de presentes
         </Button>
       </div>
+
+      <div className={css({ zIndex: 1 })}>
+        <Caption>
+          Ou nos ajude com um valor no pix: <br />
+          <b className={css({ fontSize: "2xl" })}>11 94849-5564</b>
+        </Caption>
+      </div>
     </div>
   );
 };

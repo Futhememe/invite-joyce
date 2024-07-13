@@ -51,7 +51,7 @@ export const Address = ({ onConfirmVan }: IAddress) => {
         </Caption>
       </div>
 
-      <div
+      {/* <div
         className={css({
           w: "100%",
           maxW: "100vw",
@@ -70,7 +70,7 @@ export const Address = ({ onConfirmVan }: IAddress) => {
           size="141"
           css={{ transform: "rotate(63.815deg)", bottom: -44, left: 8 }}
         />
-      </div>
+      </div> */}
       <div className={css({ zIndex: 1, mt: "2.37rem" })}>
         <Button variant="default" onClick={openAddress}>
           Saiba como chegar
