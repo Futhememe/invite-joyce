@@ -101,6 +101,10 @@ export default async function Guest({ params }: { params: { guest: string } }) {
     setInvite(res);
   }
 
+  useEffect(() => {
+    loadGuest();
+  }, []);
+
   // const inviteRef = useRef<HTMLDivElement>(null);
 
   // const scrollToInvite = () => {
