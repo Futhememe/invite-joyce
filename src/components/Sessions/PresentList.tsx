@@ -42,15 +42,25 @@ export const PresentList = () => {
 
       <div className={css({ zIndex: 1 })}>
         <Button variant="link" onClick={openGiftList}>
-          Lista de presentes
+          <b>Lista de presentes</b>
         </Button>
       </div>
 
-      <div className={css({ zIndex: 1 })}>
+      <div
+        className={css({
+          display: "flex",
+          flexDir: "column",
+          zIndex: 1,
+          justifyContent: "center",
+        })}
+      >
         <Caption>
-          Ou nos ajude com um valor no pix: <br />
-          <b className={css({ fontSize: "2xl" })}>11 94849-5564</b>
+          Ou você que desejar nos abençoar em dinheiro, pode fazer isso através
+          do pix:
         </Caption>
+        <Button variant="link" disabled>
+          <b>angelo.inacio01@hotmail.com</b>
+        </Button>
       </div>
     </div>
   );

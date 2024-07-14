@@ -46,8 +46,7 @@ export const Address = ({ onConfirmVan }: IAddress) => {
           <div className={css({ pt: "4" })} />
           DIVINAS FEZTAS
           <br />
-          Endereço:{" "}
-          <b>Rua Dempachi Nakayama, 72 - Vila Boa Vista, Barueri, SP</b>
+          Endereço: <b>R. Seikiti Nakayama, 72 - Barueri, SP</b>
         </Caption>
       </div>
 

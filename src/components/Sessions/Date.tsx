@@ -49,6 +49,11 @@ export const Date = () => {
           </div>
         </div>
       </div>
+      <div className={css({ zIndex: 1, mt: "2.37rem" })}>
+        <Caption>
+          <b>Padrinhos chegar com 1h de antecedência</b>
+        </Caption>
+      </div>
       <Plant
         variant="Fifth"
         css={{ transform: "rotate(117.981deg)", top: -8, left: -16 }}
